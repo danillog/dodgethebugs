@@ -35,7 +35,7 @@ animations = [{
 "texture": ExtResource("5_urp6f")
 }],
 "loop": true,
-"name": &"movie",
+"name": &"move",
 "speed": 5.0
 }, {
 "frames": [{
@@ -46,7 +46,7 @@ animations = [{
 "texture": ExtResource("7_606se")
 }],
 "loop": true,
-"name": &"movie_down",
+"name": &"move_down",
 "speed": 5.0
 }, {
 "frames": [{
@@ -57,7 +57,7 @@ animations = [{
 "texture": ExtResource("9_op7ga")
 }],
 "loop": true,
-"name": &"movie_up",
+"name": &"move_up",
 "speed": 5.0
 }]
 
@@ -71,8 +71,10 @@ script = ExtResource("1_n7ghd")
 position = Vector2(-1, -2)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_q13i1")
-animation = &"idle"
+animation = &"move_down"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-2, 5)
 shape = SubResource("CircleShape2D_pylmc")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
