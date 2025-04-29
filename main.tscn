@@ -1,8 +1,21 @@
-[gd_scene load_steps=2 format=3 uid="uid://df5fivwnirnji"]
+[gd_scene load_steps=3 format=3 uid="uid://df5fivwnirnji"]
 
 [ext_resource type="PackedScene" uid="uid://cng2i3fevnt0h" path="res://player.tscn" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://b6p20xbd8g4h2" path="res://enemy.tscn" id="2_0xm2m"]
 
 [node name="main" type="Node2D"]
 
 [node name="player" parent="." instance=ExtResource("1_ig7tw")]
 position = Vector2(240, 287)
+
+[node name="enemy" parent="." instance=ExtResource("2_0xm2m")]
+position = Vector2(381, 543)
+
+[node name="enemy2" parent="." instance=ExtResource("2_0xm2m")]
+position = Vector2(66, 126)
+
+[node name="enemy3" parent="." instance=ExtResource("2_0xm2m")]
+position = Vector2(77, 466)
+
+[node name="enemy4" parent="." instance=ExtResource("2_0xm2m")]
+position = Vector2(238, 89)
