@@ -1,21 +1,42 @@
-[gd_scene load_steps=3 format=3 uid="uid://df5fivwnirnji"]
+[gd_scene load_steps=5 format=3 uid="uid://df5fivwnirnji"]
 
+[ext_resource type="Script" uid="uid://mqnrpw582001" path="res://scripts/main.gd" id="1_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://cng2i3fevnt0h" path="res://player.tscn" id="1_ig7tw"]
-[ext_resource type="PackedScene" uid="uid://b6p20xbd8g4h2" path="res://enemy.tscn" id="2_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://cr05j270txows" path="res://enemy.tscn" id="2_0xm2m"]
+
+[sub_resource type="Curve2D" id="Curve2D_ig7tw"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -239, -362, 0, 0, 0, 0, 241, -362, 0, 0, 0, 0, 233, 350, 0, 0, 0, 0, -231, 342, 0, 0, 0, 0, -239, -362)
+}
+point_count = 5
 
 [node name="main" type="Node2D"]
+script = ExtResource("1_0xm2m")
+bug_scene = ExtResource("2_0xm2m")
 
 [node name="player" parent="." instance=ExtResource("1_ig7tw")]
-position = Vector2(240, 287)
+position = Vector2(239, 362)
 
-[node name="enemy" parent="." instance=ExtResource("2_0xm2m")]
-position = Vector2(381, 543)
+[node name="BugTimer" type="Timer" parent="."]
+wait_time = 0.5
 
-[node name="enemy2" parent="." instance=ExtResource("2_0xm2m")]
-position = Vector2(66, 126)
+[node name="ScoreTimer" type="Timer" parent="."]
 
-[node name="enemy3" parent="." instance=ExtResource("2_0xm2m")]
-position = Vector2(77, 466)
+[node name="StartTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
 
-[node name="enemy4" parent="." instance=ExtResource("2_0xm2m")]
-position = Vector2(238, 89)
+[node name="StartPosition" type="Marker2D" parent="."]
+position = Vector2(239, 359)
+
+[node name="BugPath" type="Path2D" parent="."]
+position = Vector2(239, 362)
+curve = SubResource("Curve2D_ig7tw")
+
+[node name="BugPathLocation" type="PathFollow2D" parent="BugPath"]
+position = Vector2(-239, -362)
+
+[connection signal="hit" from="player" to="." method="game_over"]
+[connection signal="timeout" from="BugTimer" to="." method="_on_bug_timer_timeout"]
+[connection signal="timeout" from="ScoreTimer" to="." method="_on_score_timer_timeout"]
+[connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
