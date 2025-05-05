@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://df5fivwnirnji"]
+[gd_scene load_steps=6 format=3 uid="uid://df5fivwnirnji"]
 
 [ext_resource type="Script" uid="uid://mqnrpw582001" path="res://scripts/main.gd" id="1_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://cng2i3fevnt0h" path="res://player.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://cr05j270txows" path="res://enemy.tscn" id="2_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://coq3r8gdxhupo" path="res://hud.tscn" id="4_1bvp3"]
 
 [sub_resource type="Curve2D" id="Curve2D_ig7tw"]
 _data = {
@@ -35,6 +36,8 @@ curve = SubResource("Curve2D_ig7tw")
 
 [node name="BugPathLocation" type="PathFollow2D" parent="BugPath"]
 position = Vector2(-239, -362)
+
+[node name="HUD" parent="." instance=ExtResource("4_1bvp3")]
 
 [connection signal="hit" from="player" to="." method="game_over"]
 [connection signal="timeout" from="BugTimer" to="." method="_on_bug_timer_timeout"]
