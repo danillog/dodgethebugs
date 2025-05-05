@@ -33,7 +33,7 @@ func _process(delta):
 	
 
 #verify  player collision
-func _on_body_entered(body: Node2D) -> void:
+func _on_body_entered(body):
 	hide()
 	hit.emit()
 	collision.set_deferred("disabled", true)
