@@ -27,6 +27,9 @@ func new_game():
 	$HUD.update_score(score)
 	$HUD.show_message("Get ready")
 	get_tree().call_group("bugs", "qeue_free")
+	print("Path position:", $BugPath.position)
+	print("Path exists:", is_instance_valid($BugPath))
+	print("Path has points:", $BugPath.curve.get_point_count())
 
 
 
@@ -42,43 +45,19 @@ func _on_score_timer_timeout() -> void:
 func _on_bug_timer_timeout() -> void:
 	var bug = bug_scene.instantiate()
 	var bug_location = $BugPath/BugPathLocation
-	#bug_location.progress_ratio = randf()
-	if randf() < 0.5:
-		bug_location.progress_ratio = randf_range(0.0, 0.4)
-	else:
-		bug_location.progress_ratio = randf_range(0.7, 1.0)
+	bug_location.progress_ratio = randf()
+	#if randf() < 0.5:
+		#bug_location.progress_ratio = randf_range(0.0, 0.4)
+	#else:
+		#bug_location.progress_ratio = randf_range(0.7, 1.0)
+	bug.global_position = bug_location.global_position
 
-	var direction = bug_location.rotation + PI / 2
-	bug.position = bug_location.position
+	var direction = bug_location.global_rotation + PI / 2
 	direction += randf_range(-PI /4, PI /4)
 	bug.rotation = direction
-	
-	var velocity =Vector2(randf_range(150.0,250.0), 0.0)
+
+	var velocity = Vector2(randf_range(150.0, 250.0), 0.0)
 	bug.linear_velocity = velocity.rotated(direction)
+
 	add_child(bug)
 	#
-#func _on_bug_timer_timeout() -> void:
-	#var bug = bug_scene.instantiate()
-	#var bug_location = $BugPath/BugPathLocation
-	#
-	## Defina a área "meio" que queremos evitar
-	#var middle_min = 0.4
-	#var middle_max = 0.6
-	#
-	## Gere um valor de progress_ratio que evite o meio
-	#var progress_ratio
-	#if randf() < 0.5:
-		#progress_ratio = randf_range(0.0, middle_min)
-	#else:
-		#progress_ratio = randf_range(middle_max, 1.0)
-	#
-	#bug_location.progress_ratio = progress_ratio
-	#
-	#var direction = bug_location.rotation + PI / 2
-	#bug.position = bug_location.position
-	#direction += randf_range(-PI /4, PI /4)
-	#bug.rotation = direction
-	#
-	#var velocity = Vector2(randf_range(150.0, 250.0), 0.0)
-	#bug.linear_velocity = velocity.rotated(direction)
-	#add_child(bug)

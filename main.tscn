@@ -7,7 +7,7 @@
 
 [sub_resource type="Curve2D" id="Curve2D_ig7tw"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -239, -362, 0, 0, 0, 0, 241, -362, 0, 0, 0, 0, 233, 350, 0, 0, 0, 0, -231, 342, 0, 0, 0, 0, -239, -362)
+"points": PackedVector2Array(-10.89, 6.05, 10.89, -6.05, -239, -362, 0, 0, 0, 0, 241, -362, 0, 0, 0, 0, 233, 350, 0, 0, 0, 0, -231, 342, 0, 0, 0, 0, -239, -362)
 }
 point_count = 5
 
@@ -38,6 +38,7 @@ curve = SubResource("Curve2D_ig7tw")
 
 [node name="BugPathLocation" type="PathFollow2D" parent="BugPath"]
 position = Vector2(-239, -362)
+rotation = -0.507098
 
 [connection signal="start_game" from="HUD" to="." method="new_game"]
 [connection signal="start_game" from="HUD" to="." method="_on_hud_start_game"]
