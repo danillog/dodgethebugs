@@ -35,17 +35,18 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_epg4t"]
 radius = 52.345
 
-[node name="enemy" type="RigidBody2D"]
+[node name="enemy" type="RigidBody2D" groups=["bugs"]]
 collision_layer = 2
 gravity_scale = 0.0
 script = ExtResource("1_iifgy")
 
-[node name="anim" type="AnimatedSprite2D" parent="."]
+[node name="anim" type="AnimatedSprite2D" parent="." groups=["bugs"]]
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_3yqyl")
 animation = &"yellow_beetle"
 
-[node name="collision" type="CollisionShape2D" parent="."]
+[node name="collision" type="CollisionShape2D" parent="." groups=["bugs"]]
+position = Vector2(-1, 2)
 scale = Vector2(0.5, 0.5)
 shape = SubResource("CircleShape2D_epg4t")
 disabled = true
