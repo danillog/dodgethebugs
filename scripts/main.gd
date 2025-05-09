@@ -18,6 +18,8 @@ func game_over() -> void:
 	$BugTimer.stop()
 	$ScoreTimer.stop()
 	$HUD.show_game_over()
+	$bgMusic.stop()
+	$gameOverSound.play()
 
 func new_game():
 	$StartTimer.start()
@@ -30,7 +32,7 @@ func new_game():
 	print("Path position:", $BugPath.position)
 	print("Path exists:", is_instance_valid($BugPath))
 	print("Path has points:", $BugPath.curve.get_point_count())
-
+	$bgMusic.play()
 
 
 func _on_start_timer_timeout() -> void:
