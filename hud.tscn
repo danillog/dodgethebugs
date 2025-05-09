@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://coq3r8gdxhupo"]
+[gd_scene load_steps=7 format=3 uid="uid://coq3r8gdxhupo"]
 
 [ext_resource type="Script" uid="uid://beq5vjyi2lh0p" path="res://scripts/hud.gd" id="1_8sq4i"]
 [ext_resource type="FontFile" uid="uid://cwbt2ugsjq30h" path="res://font/Dihil.ttf" id="1_64ctp"]
@@ -14,6 +14,12 @@ expand_margin_left = 20.0
 expand_margin_top = 20.0
 expand_margin_right = 20.0
 expand_margin_bottom = 20.0
+
+[sub_resource type="InputEventAction" id="InputEventAction_8sq4i"]
+action = &"start_game"
+
+[sub_resource type="Shortcut" id="Shortcut_640wx"]
+events = [SubResource("InputEventAction_8sq4i")]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_8sq4i")
@@ -94,6 +100,7 @@ theme_override_styles/pressed_mirrored = ExtResource("2_8sq4i")
 theme_override_styles/pressed = ExtResource("2_8sq4i")
 theme_override_styles/normal_mirrored = ExtResource("2_8sq4i")
 theme_override_styles/normal = ExtResource("2_8sq4i")
+shortcut = SubResource("Shortcut_640wx")
 text = "Start"
 
 [node name="MessageTimer" type="Timer" parent="."]
